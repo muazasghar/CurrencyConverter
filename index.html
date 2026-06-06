@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-icon">C</div>
+        <h1 class="header-title">Currency Converter</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="converter-card">
+            <h2 class="converter-title">Convert Currencies</h2>
+
+            <!-- Error/Status Banner -->
+            <div id="statusBanner" class="status-banner hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="status-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+                <span id="statusMessage">Error loading exchange rates.</span>
+            </div>
+
+            <div class="converter-container">
+                
+                <!-- From Section -->
+                <div class="input-box">
+                    <label class="input-label">Amount</label>
+                    <div class="input-group">
+                        <input type="number" id="fromAmount" class="input-field" placeholder="0" value="1">
+                        
+                        <!-- Dropdown Trigger -->
+                        <div class="dropdown-container" id="fromDropdownContainer">
+                            <button type="button" id="fromDropdownBtn" class="dropdown-btn">
+                                <div class="currency-display">
+                                    <img src="https://flagcdn.com/w20/us.png" alt="US Flag" class="currency-flag" id="fromFlag">
+                                    <span class="currency-code" id="fromCode">USD</span>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-arrow" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            
+                            <!-- Dropdown Menu -->
+                            <div id="fromDropdownMenu" class="dropdown-menu hidden">
+                                <div class="dropdown-search-box">
+                                    <input type="text" id="fromSearch" class="dropdown-search" placeholder="Search currencies...">
+                                </div>
+                                <ul id="fromList" class="dropdown-list">
+                                    <!-- Options injected via JS -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Swap Button -->
+                <button id="swapBtn" class="swap-btn" aria-label="Swap currencies">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="swap-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                    </svg>
+                </button>
+
+                <!-- To Section -->
+                <div class="input-box">
+                    <label class="input-label">Converted Amount</label>
+                    <div class="input-group">
+                        <input type="number" id="toAmount" class="input-field" placeholder="0">
+                        
+                        <!-- Dropdown Trigger -->
+                        <div class="dropdown-container" id="toDropdownContainer">
+                            <button type="button" id="toDropdownBtn" class="dropdown-btn">
+                                <div class="currency-display">
+                                    <img src="https://flagcdn.com/w20/eu.png" alt="EU Flag" class="currency-flag" id="toFlag">
+                                    <span class="currency-code" id="toCode">EUR</span>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-arrow" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            
+                            <!-- Dropdown Menu -->
+                            <div id="toDropdownMenu" class="dropdown-menu hidden">
+                                <div class="dropdown-search-box">
+                                    <input type="text" id="toSearch" class="dropdown-search" placeholder="Search currencies...">
+                                </div>
+                                <ul id="toList" class="dropdown-list">
+                                    <!-- Options injected via JS -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Rate Information -->
+            <div class="rate-info">
+                <div id="rateText" class="rate-text">
+                    Loading rate...
+                </div>
+                <div class="live-indicator-container">
+                    <div class="live-indicator" id="liveIndicator"></div>
+                    <span id="lastUpdated">Fetching live rates...</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        Data provided by ExchangeRate-API
+    </footer>
+
+    <!-- Scripts -->
+    <script src="currencies.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
